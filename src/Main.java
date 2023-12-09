@@ -14,7 +14,14 @@ class NumberExp extends ArithmeticExpression {
    private int Value;
    // Constructor to initialize the value
    public NumberExp(int modifiedValue) {
+      if(!isNumber(modifiedValue)) {
+         throw new IllegalArgumentException("Value must be a number");
+      }
       this.Value = modifiedValue;
+   }
+   private boolean isNumber(int value) {
+      // number validation logic
+      return true;
    }
    // Implementation of the evaluate method
    @Override
@@ -76,6 +83,20 @@ class ModuloExp extends BinaryExpression {
    @Override
    public String toStringRepresentation() {
       return left.toStringRepresentation() + " % " + right.toStringRepresentation();
+   }
+}
+public class Main {
+   public static void main(String[] args) {
+      // Constructing the expression 3 + 2 * 5
+      ArithmeticExpression term = new SumExp(
+              new NumberExp(3),
+              new ProductExp(
+                      new NumberExp(2),
+                      new NumberExp(5)
+              )
+      );
+      System.out.println("Result after evaluating: " + term.evaluate());
+      System.out.println("Representation of a string: " + term.toStringRepresentation());
    }
 }
 
