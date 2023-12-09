@@ -20,8 +20,12 @@ class NumberExp extends ArithmeticExpression {
       this.Value = modifiedValue;
    }
    private boolean isNumber(int value) {
-      // number validation logic
-      return true;
+      try {
+         int intValue = Integer.parseInt(String.valueOf(value));
+         return true;
+      } catch (NumberFormatException e) {
+         return false;
+      }
    }
    // Implementation of the evaluate method
    @Override
