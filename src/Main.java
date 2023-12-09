@@ -99,7 +99,10 @@ public class Main {
                       new NumberExp(5)
               )
       );
+      //Evaluating the expression and printing the result
       System.out.println("Result after evaluating: " + term.evaluate());
+      // Printing a string representation of the expression
+      // This calls the toStringRepresentation() method on the expression
       System.out.println("Representation of a string: " + term.toStringRepresentation());
    }
 }
